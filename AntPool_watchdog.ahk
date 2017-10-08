@@ -241,10 +241,10 @@ if (WebRequest.StatusText = "OK")
 
 	totalWarn += Warn
 	totalErr += Err
-	totalRateStr := "5m: " . total_w_hashrate5m . "  1h: " . total_w_hashrate1hr . "  24h: " . total_w_hashrate24hr 
+	totalRateStr := "10m: " . total_last10m . "  30m: " . total_last30m . "  1h: " . total_last1h . "  24h: " . total_last1d 
 
-	tipStr := chr(34) . User . chr(34) . " AntPool Watchdog Running" . startTime . chr(13) 
-		. "Errors:   " . totalErr . "   " . errorText . " Warnings:   " . totalWarn . " " . warningText . chr(13)
+	tipStr := chr(34) . User . chr(34) . " AntPool WD Running" . startTime . chr(13) 
+		. "Err: " . totalErr . " " . errorText . " Warn: " . totalWarn . " " . warningText . chr(13)
 		. A_Hour . ":" . A_Min . ":" . A_Sec . " (" . checkCounter . ")" .  chr(13) 
 		. totalRateStr 
 
