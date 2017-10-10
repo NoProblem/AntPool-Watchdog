@@ -4,7 +4,7 @@
 
 Menu, Tray, add
 Menu, Tray, add, Run AntPool Watchdog, RunWD
-Menu, Tray, add, Settings AntPool Watchdog v0.5.05b, SettingsWD 
+Menu, Tray, add, Settings AntPool Watchdog v0.6.01b, SettingsWD 
 Menu, Tray, add, Stop/Reload AntPool Watchdog, StopWD
 Menu, Tray, Tip, AntPool Watchdog Paused
 Menu, Tray, Icon, Images\pause_wd.bmp
@@ -23,6 +23,9 @@ IniRead, SleepAfterError, AntPool_watchdog.ini, AntPoolSettings, SleepAfterError
 IniRead, MustSendSMS, AntPool_watchdog.ini, AntPoolSettings, MustSendSMS
 IniRead, SMS_RU_api_id, AntPool_watchdog.ini, AntPoolSettings, SMS_RU_api_id
 IniRead, Phones, AntPool_watchdog.ini, AntPoolSettings, Phones
+IniRead, MustSendTelegram, AntPool_watchdog.ini, AntPoolSettings, MustSendTelegram
+IniRead, Telegram_token, AntPool_watchdog.ini, AntPoolSettings, Telegram_token
+IniRead, Telegram_chat_id, AntPool_watchdog.ini, AntPoolSettings, Telegram_chat_id
 
 startTime := " " . A_DD . " " . A_MMM . " " . A_Hour . ":" . A_Min . ":" . A_Sec
 textLog := "Started:" . startTime . chr(10) . chr(13)
@@ -149,7 +152,7 @@ if (WebRequest.StatusText = "OK")
 		err++
 	}	
 
-;worker main loop =====================================================================================================
+;worker main loop =========================================================================
 	i := 1
 	While (i <= totalRecord)
 	{
@@ -215,6 +218,7 @@ if (WebRequest.StatusText = "OK")
 		textLog .= "Error! " . A_Hour . ":" . A_Min . ":" . A_Sec . chr(10) . chr(13) . errorText . chr(10) . chr(13)
 		textErrorLog .= "Error! " . A_Hour . ":" . A_Min . ":" . A_Sec . chr(10) . chr(13) . errorText . chr(10) . chr(13)
 
+		; ================= SMS ===========================================================
 		try 
 		{
 			URL := "SMS disabled"
@@ -237,6 +241,32 @@ if (WebRequest.StatusText = "OK")
 			textErrorLog .= "SMS send Error! " . A_Hour . ":" . A_Min . ":" . A_Sec . chr(10) . chr(13) . URL . chr(10) . chr(13)
 			totalWarn++
 		}	
+
+		; ================= Telegram BOT ===========================================================
+		try 
+		{
+			URL := "Telegram disabled"
+			if (MustSendTelegram != 0)
+			{
+				URL := "https://api.telegram.org/bot" . Telegram_token 	
+					. "/sendMessage?chat_id=" . Telegram_chat_id . "&text=" . errorText 
+	
+				WebRequest := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+				WebRequest.Open("POST", URL, false)
+				WebRequest.SetRequestHeader("Content-Type", "application/json")
+				WebRequest.Send("")
+			}
+
+			textErrorLog .= "Telegram send " . A_Hour . ":" . A_Min . ":" . A_Sec . " " . URL . chr(10) . chr(13)
+		}
+		catch e 
+		{
+			textLog .= "Telegram send Error! " . A_Hour . ":" . A_Min . ":" . A_Sec . chr(10) . chr(13) . URL . chr(10) . chr(13)
+			textErrorLog .= "Telegram send Error! " . A_Hour . ":" . A_Min . ":" . A_Sec . chr(10) . chr(13) . URL . chr(10) . chr(13)
+			totalWarn++
+		}	
+
+
 	}
 
 	totalWarn += Warn
