@@ -4,7 +4,7 @@
 
 Menu, Tray, add
 Menu, Tray, add, Run AntPool Watchdog, RunWD
-Menu, Tray, add, Settings AntPool Watchdog v0.5.03b, SettingsWD 
+Menu, Tray, add, Settings AntPool Watchdog v0.5.05b, SettingsWD 
 Menu, Tray, add, Stop/Reload AntPool Watchdog, StopWD
 Menu, Tray, Tip, AntPool Watchdog Paused
 Menu, Tray, Icon, Images\pause_wd.bmp
