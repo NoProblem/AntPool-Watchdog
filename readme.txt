@@ -1,4 +1,4 @@
-Opensource and free script for ASIC monitoring on AntPool pool. Created by NoProblem :)
+Opensource and free script for ASIC monitoring on AntPool pool. Created by NoProblem @ moodlander :)
 
 AntPool: https://www.antpool.com/home.htm
 Pool coin mining: BTC, LTC, ETH, ETC, ZEC, DASH, BCC 
@@ -20,7 +20,7 @@ Usage:
 [AntPoolSettings]
 User=NoProblem ------------------------------------- Your sub account.
 APIkey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXX --------------- "Key" from https://www.antpool.com/user/apiSettings.htm
-SecretKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXX ------------ "Secret" from https://www.antpool.com/user/apiSettings.htm
+SecretKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXX------------- "Secret" from https://www.antpool.com/user/apiSettings.htm
 CoinType=BTC --------------------------------------- Coin 
 WorkerWarnSpeed=12000000.00 ------------------------ Speed in Mh (warning) If worker speed less than this value than warning message will apears in tray and log.
 WorkerErrorSpeed=9000000.00 ------------------------ Speed in Mh (error) If worker speed less than this value than error message will apears in tray and log and SMS will be send. 

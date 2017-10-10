@@ -1,10 +1,10 @@
-﻿;=================================== BTC AntPool Watchdog By NoProblem ==================================================
+﻿;=================================== BTC AntPool Watchdog By NoProblem @ moodlander ==================================================
 #include lib\libcrypt.ahk
 #include lib\JSON.ahk
 
 Menu, Tray, add
 Menu, Tray, add, Run AntPool Watchdog, RunWD
-Menu, Tray, add, Settings AntPool Watchdog v0.6.01b, SettingsWD 
+Menu, Tray, add, Settings AntPool Watchdog v0.6.03b, SettingsWD 
 Menu, Tray, add, Stop/Reload AntPool Watchdog, StopWD
 Menu, Tray, Tip, AntPool Watchdog Paused
 Menu, Tray, Icon, Images\pause_wd.bmp
