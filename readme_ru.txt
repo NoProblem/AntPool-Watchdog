@@ -11,9 +11,10 @@ DASH - алгоритм x11, асики: iBeLink DM384M, Pinidea DR-2 X11, ASIC Baikal A900 X
 Во время работы скрипта отображается иконка и мини статистика в трее. Скрипт раз в 2 минуты проверяет хэшрэйт асиков, если асик отвалился или его хэшрэйт уменьшился то скрипт отправляет смс.
 Для работы скрипта необходимо: 
 1. Установить программу автохоткей https://www.autohotkey.com/
-2. (Пропустить шаг если пока не хотите слать смс) Зарегистрироваться на сайте sms.ru желательно по моей рефке https://noproblem.sms.ru/ вам скидка 10% - мне бонус 1% xD. Сайт позволяет бесплатно отправить 5 смс в сутки на свой номер, этого обычно достаточно.
-3. Скачать и распаковать скрипт https://github.com/NoProblem/AntPool-watchdog/archive/master.zip
-4. Прописать в файле AntPool_watchdog.ini ваши настройки:
+2. (Пропустить шаг если не хотите слать смс) Зарегистрироваться на сайте sms.ru желательно по моей рефке https://noproblem.sms.ru/ вам скидка 10% - мне бонус 1% xD. Сайт позволяет бесплатно отправить 5 смс в сутки на свой номер, этого обычно достаточно.
+3. (Пропустить шаг если не хотите слать сообщения в Telegram) Через BotFather в Telegram создаете своего бота https://core.telegram.org/bots, получаете его token и, написав ему, получаете chat_id чата.
+4. Скачать и распаковать скрипт https://github.com/NoProblem/AntPool-Watchdog/raw/master/AntPool-Watchdog.zip
+5. Прописать в файле AntPool_watchdog.ini ваши настройки:
 
 [AntPoolSettings]
 User=NoProblem ------------------------------------- Ваш суб аккаунт на антпуле "current sub-account" https://www.antpool.com/home.htm
@@ -29,18 +30,20 @@ SleepAfterError=1800000 ---------------------------- Задержка в миллисекундах пе
 MustSendSMS=0 -------------------------------------- Отправлять SMS если произошла ошибка (слать:1 не слать:0)
 SMS_RU_api_id=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX - Ваш api_id с сайта sms.ru https://sms.ru/?panel=api
 Phones=79001234567,79001234568 --------------------- Номера телефонов на которые будет отправлено SMS.
+MustSendTelegram=0 --------------------------------- Отправлять сообщение в Telegram если произошла ошибка (слать:1 не слать:0)
+Telegram_token=XXXXXXXXX:XXXXXXXXXXXXXXXXXXXXXXXXX - токен полученный от BotFather в Telegram. 
+Telegram_chat_id=XXXXXXXXX ------------------------- chat_id вашего с ботом чата в телеграм, для этого открываете например веб клиент (https://web.telegram.org/) и пишете любое собщение созданному боту, далее в браузере делаете запрос вида https://api.telegram.org/botXXXXXXXXX:XXXXXXXXXXXXXXXXXXXXXXXXX/getUpdates?offset=0 (где XXXXXXXXX:XXXXXXXXXXXXXXXXXXXXXXXXX - token вашего бота) и узнаете значение поля id это и есть искомый chat_id. 
 
-5. Запустить скрипт (двойной клик на файле AntPool_watchdog.ahk), в трее появится иконка "пауза" кликнуть по ней правой кнопкой и выбрать в списке "Run AntPool Watchdog"
-6. Профит!
+6. Запустить скрипт (двойной клик на файле AntPool_watchdog.ahk), в трее появится иконка "пауза" кликнуть по ней правой кнопкой и выбрать в списке "Run AntPool Watchdog"
+7. Профит!
 
 Скрипт можно редактировать в любом текстовом редакторе, например я пишу в блокноте (только хардкор! :) компиляция и прочее не требуются, достаточно выбрать в трее "Reload This Script" или "Exit" и запустить скрипт заново.
 В скрипт можно легко добавить отправку емэйла или сообщения в телеграм/вайбер/скайп/ватсап/твитер/и т.д. на соответствующих сайтах есть описание api обычно аналогичное отправке смс. 
 Кому понравилось коньяк можно лить сюда :) Bitcoin: 17cQT8GjQyYg9QKt2b42PFXRTifxENdMHT
 
 Ссылки:
-качаем тут: https://github.com/NoProblem/AntPool-watchdog/archive/master.zip
+качаем тут: https://github.com/NoProblem/AntPool-Watchdog/raw/master/AntPool-Watchdog.zip
 страница проекта: https://github.com/NoProblem/AntPool-watchdog
-страница на битмедиа: https://forum.bits.media/index.php?/topic/53372-watchdog-%D0%B4%D0%BB%D1%8F-%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0-%D0%B0%D1%81%D0%B8%D0%BA%D0%BE%D0%B2%D1%84%D0%B5%D1%80%D0%BC-%D0%BD%D0%B0-antpool%D0%B5/
 В скрипте использованы две опенсорс библиотеки:
 libcrypt.ahk https://github.com/ahkscript/libcrypt.ahk
 AutoHotkey-JSON https://github.com/cocobelgica/AutoHotkey-JSON
