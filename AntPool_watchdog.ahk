@@ -4,8 +4,9 @@
 
 Menu, Tray, add
 Menu, Tray, add, Run AntPool Watchdog, RunWD
-Menu, Tray, add, Settings AntPool Watchdog v0.6.03b, SettingsWD 
+Menu, Tray, add, Show Log AntPool Watchdog, ShowLogWD
 Menu, Tray, add, Stop/Reload AntPool Watchdog, StopWD
+Menu, Tray, add, Settings AntPool Watchdog v0.7.01b, SettingsWD 
 Menu, Tray, Tip, AntPool Watchdog Paused
 Menu, Tray, Icon, Images\pause_wd.bmp
 Menu, Tray, Disable, Stop/Reload AntPool Watchdog
@@ -35,7 +36,7 @@ totalWarn := 0
 totalErr := 0
 SetFormat, float, 0.1
 
-Gui, Add, Tab3, , Settings|Log|ReadmeRU|ReadmeEN
+Gui, Add, Tab3, vTab, Settings|Log|ReadmeRU|ReadmeEN
 Gui, Tab, 1
 Gui, Add, Edit, w600 r37 -wrap vEditSettings
 Gui, Add, Button, gSaveSettings, Save and Reload
@@ -50,26 +51,31 @@ Gui, Tab, 4
 Gui, Add, Edit, w600 r39 vEditReadmeEN
 return
 
-; Settings ================================================================================
+fillGui(textLog, textErrorLog)
+{
+	GuiControl,, EditLog, %textLog%
+	GuiControl,, EditErrorLog, %textErrorLog%
+	FileRead, FileContents, AntPool_watchdog.ini
+	GuiControl, , EditSettings, %FileContents%
+	FileRead, FileContents, readme_ru.txt
+	GuiControl, , EditReadme, %FileContents%
+	FileRead, FileContents, readme.txt
+	GuiControl, , EditReadmeEN, %FileContents%
+	return
+}
+
+; Settings =============================================================================
 SettingsWD:
 Menu, Tray, Tip, AntPool Watchdog Paused
 Menu, Tray, Icon, Images\pause_wd.bmp
-
 Menu, Tray, Disable, Stop/Reload AntPool Watchdog
 Menu, Tray, Enable, Run AntPool Watchdog
-
-GuiControl,, EditLog, %textLog%
-GuiControl,, EditErrorLog, %textErrorLog%
-FileRead, FileContents, AntPool_watchdog.ini
-GuiControl, , EditSettings, %FileContents%
-FileRead, FileContents, readme_ru.txt
-GuiControl, , EditReadme, %FileContents%
-FileRead, FileContents, readme.txt
-GuiControl, , EditReadmeEN, %FileContents%
-
-Gui, +AlwaysOnTop 
-Gui, Tab, 1
+fillGui(textLog, textErrorLog)
+Gui, -AlwaysOnTop 
+GuiControl, Choose, Tab, 1
 Gui, Show
+
+MsgBox, Script Paused
 return
 
 SaveSettings:
@@ -79,7 +85,16 @@ FileAppend, %EditSettings%, AntPool_watchdog.ini
 reload
 return
 
-;RUN function ========================================================================
+;SHOW LOG ===============================================================================
+ShowLogWD:
+fillGui(textLog, textErrorLog)
+Gui, +AlwaysOnTop 
+GuiControl, Choose, Tab, 2
+Gui, Show
+Goto, RunWD
+return
+
+;RUN function ===========================================================================
 RunWD:
 
 Menu, Tray, Disable, Run AntPool Watchdog
@@ -305,6 +320,10 @@ else
 		Sleep, %SleepAfterError%
 
 	Sleep, %SleepTime%
+
+	;AntPool Request limits: Do not make more than 600 request per 10 minutes or we will ban your IP address. 
+	if (SleepTime < 1000)
+		Sleep, 1000 
 }
 ; end main loop =======================================================
 return
