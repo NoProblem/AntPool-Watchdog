@@ -158,7 +158,6 @@ if (WebRequest.StatusText = "OK")
 	total_last1d := 0.0
 	total_last1h := 0.0
 	total_last30m := 0.0
-
 	totalRecord := parsed.data.totalRecord
 	
 	if (totalRecord != WorkerCount)
@@ -280,13 +279,11 @@ if (WebRequest.StatusText = "OK")
 			textErrorLog .= "Telegram send Error! " . A_Hour . ":" . A_Min . ":" . A_Sec . chr(10) . chr(13) . URL . chr(10) . chr(13)
 			totalWarn++
 		}	
-
-
 	}
 
 	totalWarn += Warn
 	totalErr += Err
-	totalRateStr := "10m: " . total_last10m . "  30m: " . total_last30m . "  1h: " . total_last1h . "  24h: " . total_last1d 
+	totalRateStr := "10m: " . total_last10m . " 30m: " . total_last30m . " 1h: " . total_last1h . "  24h: " . total_last1d 
 
 	tipStr := chr(34) . User . chr(34) . " AntPool WD Running" . startTime . chr(13) 
 		. "Err: " . totalErr . " " . errorText . " Warn: " . totalWarn . " " . warningText . chr(13)
@@ -321,7 +318,7 @@ else
 
 	Sleep, %SleepTime%
 
-	;AntPool Request limits: Do not make more than 600 request per 10 minutes or we will ban your IP address. 
+	; AntPool Request limits: Do not make more than 600 request per 10 minutes or we will ban your IP address. 
 	if (SleepTime < 1000)
 		Sleep, 1000 
 }
