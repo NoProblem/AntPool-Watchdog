@@ -159,10 +159,15 @@ if (WebRequest.StatusText = "OK")
 	total_last1h := 0.0
 	total_last30m := 0.0
 	totalRecord := parsed.data.totalRecord
-	
+
+	if (totalRecord = "")
+	{
+		totalRecord := 0
+	}	
+
 	if (totalRecord != WorkerCount)
 	{
-		errorText .= "Worker count Error: " . totalRecord . "(" . WorkerCount . ") "
+		errorText .= "Worker count error. Found: " . totalRecord . " (expected: " . WorkerCount . ") "
 		err++
 	}	
 
