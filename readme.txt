@@ -13,7 +13,7 @@ English is not my native language, sorry for mistakes.
 This script running in tray and checking ASIC state every 2 min. If a single ASIC hashrate less than value "WorkerErrorSpeed" script will send SMS.
 Usage:
 1. Download and install Autohotkey https://www.autohotkey.com/
-2. (skip if not need SMS) Register on site sms.ru (may be other site) using my ref link https://noproblem.sms.ru/ discount 10%. 
+2. (skip if not need SMS) Register on site sms.ru
 3. Dowload script: https://github.com/NoProblem/AntPool-Watchdog/raw/master/AntPool-Watchdog.zip
 4. Change values in file AntPool_watchdog.ini
 
