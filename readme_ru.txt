@@ -1,8 +1,8 @@
 Скрипт для мониторинга состояния асиков на пуле AntPool. Скрипт бесплатный с откртым кодом пользуйтесь на здоровье :)
 
 Адрес пула: https://www.antpool.com/home.htm
-Пул майнит: BTC, LTC, ETH, ETC, ZEC, DASH, BCC 
-BTC, BCC, BCL - алгоритм SHA256, асики: AntMiner S4+, AntMiner S5, AntMiner S7, AntMiner R4, AntMiner S9, Avalon4, Avalon6, SP35 Yukon и другие.
+Пул майнит: BTC, LTC, ETH, ETC, ZEC, DASH, BCH 
+BTC, BCH - алгоритм SHA256, асики: AntMiner S4+, AntMiner S5, AntMiner S7, AntMiner R4, AntMiner S9, Avalon4, Avalon6, SP35 Yukon и другие.
 LTC - алгоритм script, асики: AntMiner L3, AntMiner L3+, Litecoin Scrypter PRO, ZeusMiner VOLCANO, A4 Dominator и другие.
 ETH, ETC - алгоритм EtHash, в текущий момент майнится на видеокартах. 
 ZEC - алгоритм Equihash, в текущий момент майнится на видеокартах. 

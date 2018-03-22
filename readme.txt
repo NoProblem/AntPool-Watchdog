@@ -1,8 +1,8 @@
 Opensource and free script for ASIC monitoring on AntPool pool. Created by NoProblem @ moodlander :)
 
 AntPool: https://www.antpool.com/home.htm
-Pool coin mining: BTC, LTC, ETH, ETC, ZEC, DASH, BCC 
-BTC, BCC, BCL - SHA256, ASICs: AntMiner S4+, AntMiner S5, AntMiner S7, AntMiner R4, AntMiner S9, Avalon4, Avalon6, SP35 Yukon and others.
+Pool coin mining: BTC, LTC, ETH, ETC, ZEC, DASH, BCH 
+BTC, BCH - SHA256, ASICs: AntMiner S4+, AntMiner S5, AntMiner S7, AntMiner R4, AntMiner S9, Avalon4, Avalon6, SP35 Yukon and others.
 LTC - script, ASICs: AntMiner L3, AntMiner L3+, Litecoin Scrypter PRO, ZeusMiner VOLCANO, A4 Dominator and others.
 ETH, ETC - EtHash, video cards.
 ZEC - Equihash, video cards.
